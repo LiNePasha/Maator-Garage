@@ -86,11 +86,11 @@ const Details = ({ params }: { params: { slug: string } }) => {
     setFields(initialFields(t));
   }, [t]);
 
-  const galleryImages =
-    motorcycle?.gallery?.map((img: any) => ({
-      url: img.url,
-      alt: img.alt || img.title,
-    })) || [];
+  // const galleryImages = motorcycle?.gallery ?
+  //   motorcycle?.gallery?.map((img: any) => ({
+  //     url: img.url,
+  //     alt: img.alt || img.title,
+  //   })) : [];
 
   const deliverableImages = motorcycle?.deliverables
     ? motorcycle?.deliverables.map((img: any) => ({
