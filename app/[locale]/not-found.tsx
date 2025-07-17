@@ -8,9 +8,9 @@ export default function NotFound() {
   const { theme } = useTheme();
   const backgroundColor = theme === "dark" ? "#0E0B0B" : "#FFFFFF";
   const textColor = theme === "dark" ? "#FFFFFF" : "#000000";
-  const buttonBackground = theme === "light" ? "#000000" : "#FFFFFF";
-  const buttonTextColor = theme === "light" ? "#FFFFFF" : "#000000";
-  const buttonBorderColor = theme === "light" ? "#000000" : "#FFFFFF";
+  const buttonBackground = theme === "dark" ? "#FFFFFF" : "#000000";
+  const buttonTextColor = theme === "dark" ? "#000000" : "#FFFFFF";
+  const buttonBorderColor = theme === "dark" ? "#FFFFFF" : "#000000";
 
     const locale = useLocale();
 

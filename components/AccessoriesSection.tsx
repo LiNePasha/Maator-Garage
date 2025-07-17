@@ -47,7 +47,7 @@ const AccessoriesSection = () => {
 
   const backgroundColor = theme === "dark" ? "#0E0B0B" : "#FFFFFF";
   const textColor = theme === "dark" ? "#FFFFFF" : "#000000";
-  const cardShadow = theme === "light" ? "0px 4px 10px #DD253D40" : "none";
+  const cardShadow = theme === "dark" ? "none"  : "0px 4px 10px #DD253D40";
 
   const totalPages = Math.ceil(accessories.length / itemsPerPage);
   const startIndex = (page - 1) * itemsPerPage;

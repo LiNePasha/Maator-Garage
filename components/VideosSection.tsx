@@ -69,7 +69,7 @@ const VideosSection = () => {
       style={{ backgroundColor, color: textColor }}
     >
       <div>
-        <ImageCard imgSrc={imageSource} />
+        {/* <ImageCard imgSrc={imageSource} /> */}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 pb-5 mt-10">

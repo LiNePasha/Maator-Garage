@@ -21,13 +21,18 @@ const HeroSection = () => {
           <div>
             <a
               href="https://store.maator.com"
-              className="text-2xl md:text-2xl font-bold underline hover:text-primary !text-white transition-colors"
+              className="text-2xl font-bold underline hover:text-primary !text-white transition-colors"
             >
               {t("onlineStore")}
             </a>
-            <h1 className="text-2xl pt-0 md:pt-4 md:text-3xl lg:text-4xl font-extrabold my-4 text-white">
+            <h1
+              className="text-2xl font-bold hover:text-primary !text-white transition-colors"
+            >
               {t("headline")}
             </h1>
+            {/* <h1 className="text-2xl pt-0 md:pt-4 md:text-3xl lg:text-4xl font-extrabold my-4 text-white">
+              {t("headline")}
+            </h1> */}
 
             {/* Button Container */}
             <div className="flex flex-wrap items-center justify-center space-x-4">

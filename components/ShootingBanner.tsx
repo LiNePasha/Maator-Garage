@@ -1,6 +1,5 @@
 'use client'
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 const ShootingBanner = () => {
   const pathname = usePathname();
@@ -24,22 +23,9 @@ const ShootingBanner = () => {
               {t(pathname.split("/").filter(Boolean).pop())}
             </h1>
 
-            {/* <div className="flex items-center space-x-4">
-              <a href="https://store.maator.com" className="px-6 md:px-8 lg:px-16 py-3 md:py-3 text-white rounded-full transition border border-white text-sm md:text-lg lg:text-3xl">
-                {t("shop")}
-              </a>
-            </div> */}
-
           </div>
         </div>
 
-        {/* <Image
-          src="/motors.png"
-          alt="Motorcycle"
-          width={1000}
-          height={600}
-          className="object-contain hidden lg:block"
-        /> */}
       </div>
     </section>
   );

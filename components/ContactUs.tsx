@@ -12,13 +12,19 @@ const Contact = () => {
     const t = useTranslations("Contact");
   return (
     <div
-      className="text-white min-h-screen overflow-hidden"
+      className="text-white overflow-hidden"
       style={{ backgroundColor, color: textColor }}
     >
-      <div>
-        <ImageCard imgSrc={imageSource} />
+      <div className="text-center mb-4">
+        <h2 className="text-3xl lg:text-4xl !mt-0 !mb-4 font-extrabold text-gray-800 dark:text-white tracking-wide relative inline-block">
+          <span className="relative z-10">{t("titleH")}</span>
+          <span className="absolute left-1/2 -bottom-[0.5rem] transform -translate-x-1/2 w-3/4 h-1 bg-[#B91C1C] rounded-full opacity-70"></span>
+        </h2>
+        <p className="text-gray-500 dark:text-white text-sm sm:text-base">
+          {t("subtitle")}
+        </p>
       </div>
-      <div className="flex flex-col md:flex-row md:flex-nowrap items-center md:items-start">
+      <div className="flex flex-col md:flex-row md:flex-nowrap items-center md:items-start mt-10">
         <div className="relative w-full md:w-3/5 h-[60vh] hidden md:block">
           <div
             className="w-full h-[65vh] bg-cover bg-center"

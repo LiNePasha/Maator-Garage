@@ -36,12 +36,19 @@
     "onePlace": "All you need in one place",
     "showMore": "Show More",
     "motorcycles": "motorcycles",
-    "scooters":"scooters",
+    "scooters": "scooters",
     "shooting": "images",
-    "scootersElectric": "Electric Scooters"
+    "scootersElectric": "Electric Scooters",
+    "videoTitle": "Videos",
+    "videoSubtitle": "Watch the latest clips and exclusive offers",
+    "galleryTitle": "Gallery",
+    "gallerySubtitle": "Explore the best shots and customer deliveries",
+    "videos": "Videos"
   },
   "Contact": {
     "title": "Get in",
+    "titleH": "Contact Us",
+    "subtitle": "Subcribe To Our NewsLetter",
     "titleHighlight": "Touch",
     "description": "Our team is always available to assist you. Contact us whenever you want!",
     "name": "Your Name*",

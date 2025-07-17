@@ -61,9 +61,9 @@ const ShootingSection = () => {
       className="text-white min-h-screen overflow-hidden px-4 md:px-10"
       style={{ backgroundColor, color: textColor }}
     >
-      <div>
+      {/* <div>
         <ImageCard imgSrc={imageSource} />
-      </div>
+      </div> */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
         {isLoading ? (
           Array(6)

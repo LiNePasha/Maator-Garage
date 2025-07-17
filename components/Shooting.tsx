@@ -33,7 +33,7 @@ const Shooting = ({ condition }: ShootingProps) => {
         const data: ImageData[] = await response.json();
 
         const allImages = data.flatMap((item) => item.acf.image_urls || []);
-        const selectedImages = condition ? allImages.slice(0, 3) : allImages;
+        const selectedImages = condition ? allImages.slice(0, 4) : allImages;
 
         setImages(selectedImages);
       } catch (error) {
@@ -46,21 +46,27 @@ const Shooting = ({ condition }: ShootingProps) => {
 
   const backgroundColor = theme === "dark" ? "#0E0B0B" : "#FFFFFF";
   const textColor = theme === "dark" ? "#FFFFFF" : "#000000";
-  const buttonBackground = theme === "light" ? "#000000" : "#FFFFFF";
-  const buttonTextColor = theme === "light" ? "#FFFFFF" : "#000000";
-  const buttonBorderColor = theme === "light" ? "#000000" : "#FFFFFF";
+  const buttonBackground = theme === "dark" ? "#FFFFFF" : "#000000";
+  const buttonTextColor = theme === "dark" ? "#000000" : "#FFFFFF";
+  const buttonBorderColor = theme === "dark" ? "#FFFFFF" : "#000000";
   const imageSource =
     theme === "light" ? "/shootingLight.png" : "/Shooting.png";
 
   return (
     <div
-      className="text-white min-h-screen overflow-hidden px-4 md:px-10"
+      className="text-white overflow-hidden px-4 md:px-10"
       style={{ backgroundColor, color: textColor }}
     >
-      <div>
-        <ImageCard imgSrc={imageSource} />
+      <div className="text-center mb-6">
+        <h2 className="text-3xl lg:text-4xl !mt-0 !mb-4 font-extrabold text-gray-800 dark:text-white tracking-wide relative inline-block">
+          <span className="relative z-10">{t("galleryTitle")}</span>
+          <span className="absolute left-1/2 -bottom-[0.5rem] transform -translate-x-1/2 w-3/4 h-1 bg-[#B91C1C] rounded-full opacity-70"></span>
+        </h2>
+        <p className="text-gray-500 dark:text-white text-sm sm:text-base">
+          {t("gallerySubtitle")}
+        </p>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {images.length === 0 ? (
           <div className="text-center text-xl">No images available.</div>
         ) : (
@@ -69,7 +75,7 @@ const Shooting = ({ condition }: ShootingProps) => {
               <Image
                 src={imageUrl}
                 alt={`Image ${index + 1}`}
-                className="rounded-xl object-cover"
+                className="rounded-xl object-contain"
                 layout="fill"
               />
             </div>
