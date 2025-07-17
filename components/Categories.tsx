@@ -52,8 +52,8 @@ const Categories = ({ home }: categoriesProps) => {
     theme === "dark" ? "/Models (2).png" : "/categoriesLight.png";
 
   return (
-    <div className="overflow-hidden px-4 md:px-10">
-      <div style={{ backgroundColor, color: textColor }}>
+    <div style={{ backgroundColor, color: textColor }} className="overflow-hidden px-4 md:px-10">
+      <div>
         <div>
           {/* <ImageCard imgSrc={imageSource} /> */}
         </div>
