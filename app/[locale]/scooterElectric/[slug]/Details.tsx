@@ -254,7 +254,7 @@ const Details = ({ params }: { params: { slug: string } }) => {
             <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 h-full w-[4px] bg-[#B91C1C]"></div>
             <div className="flex flex-col sm:flex-row items-center relative">
               {/* Text on the right */}
-              <div className="sm:w-1/2 text-center text-black dark:text-white sm:pl-10">
+              <div className="sm:w-1/2 text-black dark:text-white sm:pl-10">
                 <div
                   className="[&>ul]:list-none [&>ul>li]:before:content-['-'] [&>ul>li]:before:ml-1 [&>ul]:p-0 [&>ul>li]:m-0 [&>ul>li]:!font-bold"
                   dangerouslySetInnerHTML={{
@@ -285,7 +285,7 @@ const Details = ({ params }: { params: { slug: string } }) => {
 
             <div className="flex flex-col sm:flex-row items-center mb-4 relative">
               {/* Text on the right */}
-              <div className="sm:w-1/2 text-center text-black dark:text-white sm:pl-10">
+              <div className="sm:w-1/2 text-black dark:text-white sm:pl-10">
                 <div
                   className="[&>ul]:list-none [&>ul>li]:before:content-['-'] [&>ul>li]:before:ml-1 [&>ul]:p-0 [&>ul>li]:m-0 [&>ul>li]:!font-bold"
                   dangerouslySetInnerHTML={{
@@ -311,7 +311,7 @@ const Details = ({ params }: { params: { slug: string } }) => {
 
             <div className="flex flex-col sm:flex-row items-center mb-4 relative">
               {/* Text on the right */}
-              <div className="sm:w-1/2 text-center text-black dark:text-white sm:pl-10">
+              <div className="sm:w-1/2 text-black dark:text-white sm:pl-10">
                 <div
                   className="[&>ul]:list-none [&>ul>li]:before:content-['-'] [&>ul>li]:before:ml-1 [&>ul]:p-0 [&>ul>li]:m-0 [&>ul>li]:!font-bold"
                   dangerouslySetInnerHTML={{
@@ -341,7 +341,7 @@ const Details = ({ params }: { params: { slug: string } }) => {
             <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 h-full w-[4px] bg-[#B91C1C]"></div>
             <div className="flex flex-col sm:flex-row items-center mb-4 relative">
               {/* Text on the right */}
-              <div className="sm:w-1/2 text-center text-black dark:text-white sm:pl-10">
+              <div className="sm:w-1/2 text-black dark:text-white sm:pl-10">
                 <div
                   className="[&>ul]:list-none [&>ul>li]:before:content-['-'] [&>ul>li]:before:ml-1 [&>ul]:p-0 [&>ul>li]:m-0 [&>ul>li]:!font-bold"
                   dangerouslySetInnerHTML={{

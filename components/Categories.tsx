@@ -52,30 +52,30 @@ const Categories = ({ home }: categoriesProps) => {
     theme === "dark" ? "/Models (2).png" : "/categoriesLight.png";
 
   return (
-    <div style={{ backgroundColor, color: textColor }} className="overflow-hidden px-4 md:px-10">
+    <div
+      style={{ backgroundColor, color: textColor }}
+      className="overflow-hidden px-4 md:px-10"
+    >
       <div>
-        <div>
-          {/* <ImageCard imgSrc={imageSource} /> */}
-        </div>
+        <div>{/* <ImageCard imgSrc={imageSource} /> */}</div>
 
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 mt-2 place-items-center">
           {images.map((image, index) => (
             <Link
-            href={`/${locale}/${image.href}`}
+              href={`/${locale}/${image.href}`}
               key={index}
-              className="relative w-full h-[350px] lg:h-[550px] rounded-lg overflow-hidden"
+              className="relative w-full aspect-[3/4] rounded-lg overflow-hidden"
             >
               <Image
                 src={image.src}
                 alt={image.alt}
-                layout="fill"
+                fill
                 quality={100}
-                className="rounded-lg object-cover m-0"
+                className="rounded-lg object-cover"
               />
             </Link>
           ))}
         </div>
-
       </div>
     </div>
   );
