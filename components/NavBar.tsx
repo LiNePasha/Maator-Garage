@@ -38,14 +38,24 @@ const NavBar = ({ className, id }: NavProps) => {
     {
       label: "Scooters",
     },
-     {
+    {
       label: "Scooters Electric",
     },
   ]);
   const pathname = usePathname();
 
   const router = useRouter();
+  const [query, setQuery] = useState("");
   const currentLocale = useLocale();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!query.trim()) return;
+
+    // Redirect to search results page with query param
+    router.push(`/${currentLocale}/search?term=${encodeURIComponent(query)}`);
+  };
 
   const switchLocale = (targetLocale: string) => {
     const path = window.location.pathname;
@@ -139,11 +149,19 @@ const NavBar = ({ className, id }: NavProps) => {
           shouldHide ? "hidden" : ""
         }`}
       ></div>
-{pathname}
+      {pathname}
       <nav
         className={cn(
           "absolute z-50 top-0 w-full  text-white",
-          `${pathname.includes("posts") || pathname.includes("contact") || pathname.includes("motocycle") || pathname.includes("scooter") ? 'bg-black' : 'bg-transparent'}`,
+          `${
+            pathname.includes("posts") ||
+            pathname.includes("contact") ||
+            pathname.includes("motocycle") ||
+            pathname.includes("scooter") ||
+            pathname.includes("search")
+              ? "bg-black"
+              : "bg-transparent"
+          }`,
           className
         )}
         id={id}
@@ -155,26 +173,40 @@ const NavBar = ({ className, id }: NavProps) => {
         </div>
 
         {/* Desktop Menu */}
-        <div className="hidden md:flex justify-between items-center px-6 md:px-20">
-          <div className="flex items-center">
+        <div className="hidden md:block">
+          {/* Top Row: Logo */}
+          <div className="flex justify-center py-2">
             <Link href="/">
               <Image
-                src="/logo.png"
+                src="/logobb.png"
                 alt="logo"
-                width={150}
+                width={100}
                 height={75}
                 priority
               />
             </Link>
           </div>
-          <div className="flex gap-8 text-lg font-semibold">
+
+          {/* Middle Row: Search Bar */}
+          <form onSubmit={handleSearch} className="flex justify-center mb-4">
+            <input
+              type="text"
+              placeholder="ابحث عن موتوسيكل أو سكوتر..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="w-1/3 max-w-md px-4 py-2 rounded-full bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </form>
+
+          {/* Bottom Row: Nav Links */}
+          <div className="flex justify-center space-x-6 rtl:space-x-reverse text-lg font-semibold border-t border-gray-700 py-2">
             {navLinks.map((link, index) => (
               <div key={index} className="relative hover:text-primary">
                 {link.nestedSubmenu ? (
                   <>
                     <button
                       onClick={() => toggleDropdown(link.label)}
-                      className="flex items-center hover:text-primary"
+                      className="flex items-center"
                     >
                       {link.label}
                       <svg
@@ -191,33 +223,35 @@ const NavBar = ({ className, id }: NavProps) => {
                       </svg>
                     </button>
                     {openDropdown === link.label && (
-                      <div className="absolute bg-white text-black rounded shadow-md mt-2">
+                      <div className="absolute bg-white text-black rounded shadow-md mt-2 z-50">
                         {link.nestedSubmenu.map((sub, subIndex) => (
-                          <div key={subIndex} className="relative">
-                            <Link
-                              href={sub.href || "#"}
-                              className="px-4 py-2 hover:text-primary flex justify-between items-center "
-                            >
-                              {sub.label}
-                            </Link>
-                          </div>
+                          <Link
+                            key={subIndex}
+                            href={sub.href || "#"}
+                            className="block px-4 py-2 hover:text-primary"
+                          >
+                            {sub.label}
+                          </Link>
                         ))}
                       </div>
                     )}
                   </>
                 ) : (
-                  <Link className="font-semibold" href={link.href || "#"}>
+                  <Link
+                    href={link.href || "#"}
+                    className={`${
+                      link.href === "/" ? "text-primary" : ""
+                    } hover:text-primary`}
+                  >
                     {link.label}
                   </Link>
                 )}
               </div>
             ))}
           </div>
-          <LocaleSwitcher />
         </div>
 
         {/* Mobile Menu */}
-
         <button className="md:hidden flex justify-between items-center text-white px-6 w-full">
           <Link href="/">
             <Image
@@ -228,6 +262,17 @@ const NavBar = ({ className, id }: NavProps) => {
               className="block md:hidden"
             />
           </Link>
+
+          {/* Middle Row: Search Bar */}
+          <form onSubmit={handleSearch} className="flex min-w-[250px] mb-4">
+            <input
+              type="text"
+              placeholder="ابحث عن موتوسيكل أو سكوتر..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="w-full text-sm max-w-md px-4 py-1 md:py-2 rounded-full bg-gray-100 text-black focus:outline-none focus:ring-2 focus:ring-primary"
+            />
+          </form>
 
           <svg
             onClick={toggleMobileMenu}

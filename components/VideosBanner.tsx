@@ -7,7 +7,7 @@ const VideosBanner = () => {
 
   return (
     <section
-      className="relative w-full text-white flex flex-col md:flex-row items-center pt-[60px] md:pt-[8vh] h-auto lg:h-[50vh]"
+      className="relative w-full text-white flex flex-col md:flex-row items-center pt-[60px] md:pt-[20vh] h-auto lg:h-[50vh]"
       style={{
         backgroundImage: "url('/Car.webp')",
         backgroundSize: "cover",

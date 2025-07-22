@@ -61,7 +61,7 @@ const VideosSection = () => {
 
   const backgroundColor = theme === "dark" ? "#0E0B0B" : "#FFFFFF";
   const textColor = theme === "dark" ? "#FFFFFF" : "#000000";
-  const imageSource = theme === "light" ? "/videosLight.png" : "/Videos.png";
+  const imageSource = theme === "dark" ? "/Videos.png" : "/videosLight.png";
 
   return (
     <div

@@ -53,9 +53,6 @@ const ShootingSection = () => {
   const backgroundColor = theme === "dark" ? "#0E0B0B" : "#FFFFFF";
   const textColor = theme === "dark" ? "#FFFFFF" : "#000000";
 
-  const imageSource =
-    theme === "light" ? "/shootingLight.png" : "/Shooting.png";
-
   return (
     <div
       className="text-white min-h-screen overflow-hidden px-4 md:px-10"

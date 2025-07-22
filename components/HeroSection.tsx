@@ -7,7 +7,7 @@ const HeroSection = () => {
 
   return (
     <section
-      className="relative w-full text-white flex flex-col md:flex-row items-center pt-[0px] md:pt-[8vh] h-auto lg:h-[100vh]"
+      className="relative w-full text-white flex flex-col md:flex-row items-center pt-[0px] md:pt-[20vh] h-auto lg:h-[100vh]"
       style={{
         backgroundImage: "url('/Car.webp')",
         backgroundSize: "cover",
@@ -66,14 +66,14 @@ const HeroSection = () => {
         {/* Right Image Section */}
         <a
   href="https://store.maator.com"
-  className="flex w-full md:w-1/2 h-[calc(70vh-130px)] md:h-[calc(100vh-130px)] items-center justify-center order-1 mb-4 md:mb-0 md:order-2"
+  className="flex w-full md:w-1/2 h-[calc(60vh-130px)] md:h-[calc(100vh-130px)] items-center justify-center order-1 mb-4 md:mb-0 md:order-2"
 >
   <div className="relative w-[300px] h-[300px] md:w-full md:h-full">
     <Image
       src="/NHT200_MG20BW-EU_RED.png"
       alt={t("motorcycle")}
       fill
-      className="object-contain rounded-lg"
+      className="object-contain rounded-lg !my-8"
     />
   </div>
 </a>

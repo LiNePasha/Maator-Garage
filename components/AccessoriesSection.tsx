@@ -67,7 +67,7 @@ const AccessoriesSection = () => {
       <div>
         <ImageCard
           imgSrc={
-            theme === "light" ? "/motorsectionlight.png" : "/motorsection.png"
+            theme === "dark" ? "/motorsection.png" : "/motorsectionlight.png"
           }
         />
       </div>

@@ -7,8 +7,6 @@ const Contact = () => {
   const { theme } = useTheme();
   const backgroundColor = theme === "dark" ? "#0E0B0B" : "#FFFFFF";
   const textColor = theme === "dark" ? "#FFFFFF" : "#000000";
-  const imageSource =
-    theme === "light" ? "/contactLight.png" : "/Contact Us.png";
     const t = useTranslations("Contact");
   return (
     <div

@@ -49,8 +49,6 @@ const Shooting = ({ condition }: ShootingProps) => {
   const buttonBackground = theme === "dark" ? "#FFFFFF" : "#000000";
   const buttonTextColor = theme === "dark" ? "#000000" : "#FFFFFF";
   const buttonBorderColor = theme === "dark" ? "#FFFFFF" : "#000000";
-  const imageSource =
-    theme === "light" ? "/shootingLight.png" : "/Shooting.png";
 
   return (
     <div

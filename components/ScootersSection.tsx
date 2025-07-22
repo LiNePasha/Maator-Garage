@@ -66,7 +66,6 @@ const ScootersSection = () => {
 
   const backgroundColor = theme === "dark" ? "#0E0B0B" : "#FFFFFF";
   const textColor = theme === "dark" ? "#FFFFFF" : "#000000";
-  const cardShadow = theme === "light" ? "0px 4px 10px #DD253D40" : "none";
 
   const totalPages = Math.ceil(scooters.length / itemsPerPage);
   const startIndex = (page - 1) * itemsPerPage;
@@ -83,15 +82,8 @@ const ScootersSection = () => {
 
   return (
     <section style={{ backgroundColor, color: textColor }} className="py-10">
-      {/* <div>
-        <ImageCard
-          imgSrc={
-            theme === "light" ? "/motorsectionlight.png" : "/motorsection.png"
-          }
-        />
-      </div> */}
       <div className="container mx-auto mt-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
           {loading
             ? Array(itemsPerPage)
                 .fill(0)
@@ -113,18 +105,18 @@ const ScootersSection = () => {
                   key={scooter.id}
                   className="overflow-hidden"
                 >
-                  <div className="relative w-full rounded-lg mx-auto h-[55vh] px-4">
+                  <div className="relative w-full rounded-lg mx-auto h-[50vh] md:h-[55vh] px-0 md:px-4">
                     <Image
                       src={scooter.src}
                       alt={scooter.title}
                       layout="fill"
                       objectFit="cover"
-                      className="rounded-xl"
+                      className="rounded-xl !m-0"
                     />
                   </div>
 
                   <div className="p-2 text-center">
-                    <h3 className="text-3xl !font-bold !mt-[1.3em] !mb-1 dark:text-white">
+                    <h3 className="text-3xl !font-bold !mt-0 !mb-1 dark:text-white">
                       {scooter.title}
                     </h3>
                     <p className="text-primary text-lg font-bold">
