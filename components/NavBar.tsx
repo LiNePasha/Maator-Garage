@@ -264,7 +264,7 @@ const NavBar = ({ className, id }: NavProps) => {
           </Link>
 
           {/* Middle Row: Search Bar */}
-          <form onSubmit={handleSearch} className="flex min-w-[250px] mb-4">
+          <form onSubmit={handleSearch} className="flex min-w-[50vw] mb-4">
             <input
               type="text"
               placeholder="ابحث عن موتوسيكل أو سكوتر..."

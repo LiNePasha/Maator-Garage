@@ -80,7 +80,7 @@ const MotorcyclesSection = () => {
 
   return (
     <section style={{ backgroundColor, color: textColor }}>
-      <div className="container mx-auto mt-6">
+      <div className="container mx-auto mt-6 px-0 md:px-[2rem]">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {loading
             ? Array(itemsPerPage)

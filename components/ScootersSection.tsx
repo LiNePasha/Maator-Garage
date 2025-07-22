@@ -82,8 +82,8 @@ const ScootersSection = () => {
 
   return (
     <section style={{ backgroundColor, color: textColor }} className="py-10">
-      <div className="container mx-auto mt-6">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <div className="container mx-auto mt-6 px-0 md:px-[2rem]">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-6">
           {loading
             ? Array(itemsPerPage)
                 .fill(0)
