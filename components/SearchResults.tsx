@@ -82,11 +82,8 @@ export default function SearchResults({ term }: { term: string }) {
               );
             }}
           >
-            <h2 className="text-xl font-semibold !my-0">
-              {item.acf?.title || item.slug}
-            </h2>
             {item.acf?.image && (
-              <div className="relative w-full mx-auto h-[50vh] md:h-[55vh] px-0 md:px-4">
+              <div className="relative w-full mx-auto h-[45vh] md:h-[55vh] px-0 md:px-4">
                 <Image
                   src={item.acf.image}
                   alt={item.acf.title || item.slug}
@@ -96,6 +93,9 @@ export default function SearchResults({ term }: { term: string }) {
                 />
               </div>
             )}
+            <h3 className="text-lg md:text-3xl !font-bold !mt-0 !mb-1 dark:text-white">
+              {item.acf?.title || item.slug}
+            </h3>
             {item.acf?.price && (
               <p className="text-gray-700">💰 {item.acf.price}</p>
             )}

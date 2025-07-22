@@ -105,7 +105,7 @@ const ScootersSection = () => {
                   key={scooter.id}
                   className="overflow-hidden"
                 >
-                  <div className="relative w-full rounded-lg mx-auto h-[50vh] md:h-[55vh] px-0 md:px-4">
+                  <div className="relative w-full rounded-lg mx-auto h-[45vh] md:h-[55vh] px-0 md:px-4">
                     <Image
                       src={scooter.src}
                       alt={scooter.title}
@@ -116,7 +116,7 @@ const ScootersSection = () => {
                   </div>
 
                   <div className="p-2 text-center">
-                    <h3 className="text-3xl !font-bold !mt-0 !mb-1 dark:text-white">
+                    <h3 className="text-lg md:text-3xl !font-bold !mt-0 !mb-1 dark:text-white">
                       {scooter.title}
                     </h3>
                     <p className="text-primary text-lg font-bold">
