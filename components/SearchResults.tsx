@@ -51,7 +51,7 @@ export default function SearchResults({ term }: { term: string }) {
   }, [term]);
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6">
+    <div className="grid grid-cols-2 lg:grid-cols-3 gap-1 md:gap-6">
       {loading ? (
         // Skeleton when loading
         Array.from({ length: 3 }).map((_, index) => (
@@ -83,7 +83,7 @@ export default function SearchResults({ term }: { term: string }) {
             }}
           >
             {item.acf?.image && (
-              <div className="relative w-full mx-auto h-[35vh] md:h-[55vh] px-0 md:px-4">
+              <div className="relative w-full mx-auto h-[34vh] md:h-[55vh] px-0 md:px-4">
                 <Image
                   src={item.acf.image}
                   alt={item.acf.title || item.slug}

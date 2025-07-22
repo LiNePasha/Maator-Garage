@@ -106,7 +106,7 @@ const MotorcyclesSection = () => {
                   }}
                   className="overflow-hidden cursor-pointer"
                 >
-                  <div className="relative w-full mx-auto h-[35vh] md:h-[55vh] px-0 md:px-4">
+                  <div className="relative w-full mx-auto h-[34vh] md:h-[55vh] px-0 md:px-4">
                     <Image
                       src={bike.src}
                       alt={bike.title}

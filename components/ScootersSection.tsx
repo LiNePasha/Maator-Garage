@@ -83,7 +83,7 @@ const ScootersSection = () => {
   return (
     <section style={{ backgroundColor, color: textColor }} className="py-10">
       <div className="container mx-auto mt-6 px-0 md:px-[2rem]">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-6">
           {loading
             ? Array(itemsPerPage)
                 .fill(0)
@@ -105,7 +105,7 @@ const ScootersSection = () => {
                   key={scooter.id}
                   className="overflow-hidden"
                 >
-                  <div className="relative w-full rounded-lg mx-auto h-[35vh] md:h-[55vh] px-0 md:px-4">
+                  <div className="relative w-full rounded-lg mx-auto h-[34vh] md:h-[55vh] px-0 md:px-4">
                     <Image
                       src={scooter.src}
                       alt={scooter.title}
