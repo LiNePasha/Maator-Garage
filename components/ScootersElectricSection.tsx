@@ -105,7 +105,7 @@ const ScootersSection = () => {
                   key={scooter.id}
                   className="overflow-hidden"
                 >
-                  <div className="relative w-full rounded-lg mx-auto h-[45vh] md:h-[55vh] px-0 md:px-4">
+                  <div className="relative w-full rounded-lg mx-auto h-[40vh] md:h-[55vh] px-0 md:px-4">
                     <Image
                       src={scooter.src}
                       alt={scooter.title}
