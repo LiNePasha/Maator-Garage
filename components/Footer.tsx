@@ -40,16 +40,22 @@ const Footer = () => {
         title: t("location"),
         items: [
           {
+            text: t("ourNumber"),
+          },
+          {
             text: t("ourLocation"),
+          },
+          {
+            text: t("ourEmail"),
           },
         ],
       },
       {
         title: t("home"),
         items: [
-          { text: t("videos"), href: withLocale("/motorcycles") },
-          { text: t("shooting"), href: withLocale("/motorcycles") },
-          { text: t("contact"), href: withLocale("/motorcycles") },
+          { text: t("videos"), href: withLocale("/videos") },
+          { text: t("shooting"), href: withLocale("/shooting") },
+          { text: t("contact"), href: withLocale("/contact") },
         ],
       },
     ],

@@ -83,7 +83,7 @@ export default function SearchResults({ term }: { term: string }) {
             }}
           >
             {item.acf?.image && (
-              <div className="relative w-full mx-auto h-[40vh] md:h-[55vh] px-0 md:px-4">
+              <div className="relative w-full mx-auto h-[38vh] md:h-[55vh] px-0 md:px-4">
                 <Image
                   src={item.acf.image}
                   alt={item.acf.title || item.slug}
