@@ -41,6 +41,9 @@ const NavBar = ({ className, id }: NavProps) => {
     {
       label: "Scooters Electric",
     },
+    {
+      label: "Used",
+    },
   ]);
   const pathname = usePathname();
 
@@ -94,6 +97,8 @@ const NavBar = ({ className, id }: NavProps) => {
             ? "scooters"
             : category.label === "Scooters Electric"
             ? "scootersElectric"
+            : category.label === "Used"
+            ? "usedMotos"
             : category.label === "Accessories"
             ? "accessories"
             : "home"
@@ -105,6 +110,8 @@ const NavBar = ({ className, id }: NavProps) => {
             ? withLocale("/scooters")
             : category.label === "Scooters Electric"
             ? withLocale("/scootersElectric")
+            : category.label === "Used"
+            ? withLocale("/usedMotos")
             : category.label === "Accessories"
             ? withLocale("/accessories")
             : withLocale("/"),
@@ -127,6 +134,7 @@ const NavBar = ({ className, id }: NavProps) => {
     "/motorcycles",
     "/scooters",
     "/scootersElectric",
+    "/usedMotos",
     "/accessories",
     "/driveschool",
     "/posts",
@@ -137,6 +145,7 @@ const NavBar = ({ className, id }: NavProps) => {
     // Check if path starts with "/.../"
     if (path.startsWith("/motocycle/")) return true;
     if (path.startsWith("/scooter/")) return true;
+    if (path.startsWith("/used/")) return true;
     return false;
   }
 
@@ -158,6 +167,7 @@ const NavBar = ({ className, id }: NavProps) => {
             pathname.includes("contact") ||
             pathname.includes("motocycle") ||
             pathname.includes("scooter") ||
+            pathname.includes("used") ||
             pathname.includes("search")
               ? "bg-black"
               : "bg-transparent"

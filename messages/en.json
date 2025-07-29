@@ -18,7 +18,8 @@
     "ourLocation": "Maadi as Sarayat Al Gharbeyah, Cairo Governorate 11728",
     "ar": "ARABIC",
     "en": "ENGLISH",
-    "go": "Shop Accessories"
+    "go": "Shop Accessories",
+    "usedMotos": "Used"
   },
   "Videos": {
     "title1": "Bring your style",
@@ -45,7 +46,8 @@
     "videoSubtitle": "Watch the latest clips and exclusive offers",
     "galleryTitle": "Gallery",
     "gallerySubtitle": "Explore the best shots and customer deliveries",
-    "videos": "Videos"
+    "videos": "Videos",
+    "usedMotos": "Used"
   },
   "Contact": {
     "title": "Get in",

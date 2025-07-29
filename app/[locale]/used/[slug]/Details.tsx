@@ -157,7 +157,7 @@ const Details = ({ params }: { params: { slug: string } }) => {
       setLoading(true);
       try {
         const response = await fetch(
-          `https://store.maator.com/wp-json/wp/v2/scooter-electric?slug=${params.slug}&acf_format=standard`
+          `https://store.maator.com/wp-json/wp/v2/used?slug=${params.slug}&acf_format=standard`
         );
         const res = await response.json();
         const data = res[0];
