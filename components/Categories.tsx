@@ -40,7 +40,7 @@ const Categories = ({ home }: categoriesProps) => {
       src: "https://ik.imagekit.io/evhp4armq/%D9%83%D9%87%D8%B1%D8%A8%D8%A7-700x828.webp?updatedAt=1752750516747",
       alt: "bike2",
       category: "ScootersE",
-      href: "scootersElectric",
+      href: "electricScooters",
       label: t("scooters"),
     },
   ];

@@ -44,7 +44,7 @@ export async function generateMetadata({
         "Mator Garage scooter image gallery",
       ];
 
-  const url = `https://maator.com/${currentLocale}/scootersElectric`;
+  const url = `https://maator.com/${currentLocale}/electricScooters`;
   const image = "https://maator.com/scooters-cover.jpg"; // استبدل هذا برابط صورة الغلاف الخاصة بالاسكوترات
 
   const jsonLd = {
@@ -76,8 +76,8 @@ export async function generateMetadata({
     alternates: {
       canonical: url,
       languages: {
-        en: "https://maator.com/en/scootersElectric",
-        ar: "https://maator.com/ar/scootersElectric",
+        en: "https://maator.com/en/electricScooters",
+        ar: "https://maator.com/ar/electricScooters",
       },
     },
     openGraph: {

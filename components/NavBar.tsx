@@ -96,7 +96,7 @@ const NavBar = ({ className, id }: NavProps) => {
             : category.label === "Scooters"
             ? "scooters"
             : category.label === "Scooters Electric"
-            ? "scootersElectric"
+            ? "electricScooters"
             : category.label === "Used"
             ? "usedMotos"
             : category.label === "Accessories"
@@ -109,7 +109,7 @@ const NavBar = ({ className, id }: NavProps) => {
             : category.label === "Scooters"
             ? withLocale("/scooters")
             : category.label === "Scooters Electric"
-            ? withLocale("/scootersElectric")
+            ? withLocale("/electricScooters")
             : category.label === "Used"
             ? withLocale("/usedMotos")
             : category.label === "Accessories"
@@ -133,7 +133,7 @@ const NavBar = ({ className, id }: NavProps) => {
     "/shooting",
     "/motorcycles",
     "/scooters",
-    "/scootersElectric",
+    "/electricScooters",
     "/usedMotos",
     "/accessories",
     "/driveschool",

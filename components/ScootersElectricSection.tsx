@@ -124,7 +124,7 @@ const ScootersSection = () => {
                     </p>
                     <button
                       onClick={() => {
-                        router.push(`/${locale}/scooterElectric/${scooter.slug}`);
+                        router.push(`/${locale}/electricScooter/${scooter.slug}`);
                       }}
                       className="mt-4 bg-primary text-white px-3 py-1 rounded"
                     >
