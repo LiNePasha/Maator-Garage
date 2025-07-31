@@ -167,6 +167,7 @@ const NavBar = ({ className, id }: NavProps) => {
             pathname.includes("contact") ||
             pathname.includes("motocycle") ||
             pathname.includes("scooter") ||
+            pathname.includes("electricScooter") ||
             pathname.includes("used") ||
             pathname.includes("search")
               ? "bg-black"
