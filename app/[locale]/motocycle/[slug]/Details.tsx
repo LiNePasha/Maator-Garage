@@ -457,9 +457,9 @@ const Details = ({ params }: { params: { slug: string } }) => {
 
         {motorcycle.number && (
           <div className="bg-gray-100 p-4 rounded-lg shadow-md mt-6 text-center">
-            <h3 className="text-lg font-semibold text-primary mb-2">
+            {/* <h3 className="text-lg font-semibold text-primary mb-2">
               {t("intersted")}
-            </h3>
+            </h3> */}
             <div className="text-xl text-gray-800 font-bold tracking-wide">
               {motorcycle.number}
             </div>
