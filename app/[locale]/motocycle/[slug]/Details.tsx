@@ -71,6 +71,7 @@ interface MotorcycleDetails {
   framel_image: any;
   framel_props: any;
   motor_image: any;
+  number: any;
 }
 
 const Details = ({ params }: { params: { slug: string } }) => {
@@ -86,11 +87,12 @@ const Details = ({ params }: { params: { slug: string } }) => {
     setFields(initialFields(t));
   }, [t]);
 
-  const galleryImages = motorcycle?.gallery ?
-    motorcycle?.gallery?.map((img: any) => ({
-      url: img.url,
-      alt: img.alt || img.title,
-    })) : [];
+  const galleryImages = motorcycle?.gallery
+    ? motorcycle?.gallery?.map((img: any) => ({
+        url: img.url,
+        alt: img.alt || img.title,
+      }))
+    : [];
 
   const deliverableImages = motorcycle?.deliverables
     ? motorcycle?.deliverables.map((img: any) => ({
@@ -185,6 +187,7 @@ const Details = ({ params }: { params: { slug: string } }) => {
             framel_props: data.acf.framel_props,
             videos: data.acf.videos,
             motor_image: data.acf.motor_image,
+            number: data.acf.number,
           });
           console.log(data.acf.videos);
         } else {
@@ -451,9 +454,20 @@ const Details = ({ params }: { params: { slug: string } }) => {
             media={MotocycleVideos}
           />
         )}
+
+        {motorcycle.number && (
+          <div className="bg-gray-100 p-4 rounded-lg shadow-md mt-6 text-center">
+            <h3 className="text-lg font-semibold text-primary mb-2">
+              {t("intersted")}
+            </h3>
+            <div className="text-xl text-gray-800 font-bold tracking-wide">
+              {motorcycle.number}
+            </div>
+          </div>
+        )}
       </div>
 
-      <div className="w-full px-0 lg:px-12 bg-transparent z-20">
+      {/* <div className="w-full px-0 lg:px-12 bg-transparent z-20">
         <form
           className="space-y-6 w-full bg-white text-gray-700 p-6 rounded-md"
           onSubmit={handleSubmit}
@@ -518,7 +532,7 @@ const Details = ({ params }: { params: { slug: string } }) => {
             </div>
           )}
         </form>
-      </div>
+      </div> */}
 
       <div className="flex justify-center py-14">
         <Link href={`/${locale}`}>
