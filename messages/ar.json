@@ -19,7 +19,7 @@
     "ar": "عربي",
     "en": "انجليزي",
     "go": "تسوق الأكسسوارات",
-    "usedMotos": "المستعمل"
+    "used": "المستعمل"
   },
   "Hero": {
     "onlineStore": "ماتور جراج",
@@ -43,7 +43,7 @@
     "galleryTitle": "المعرض",
     "gallerySubtitle": "صور أفضل في المعرض وتسليمات العملاء",
     "videos": "الفديوهات",
-    "usedMotos": "المستعمل"
+    "used": "المستعمل"
   },
   "Videos": {
     "title1": "شوف المناسب ليك",
@@ -101,7 +101,8 @@
     "showDetails": "تفاصيل",
     "videos": "فديوهات العرض",
     "motoDetails": "مواصفات الموتوسيكل",
-    "scooterDetails": "مواصفات الأسكوتر"
+    "scooterDetails": "مواصفات الأسكوتر",
+    "usedDetails": "المواصفات"
   },
   "posts": {
     "allTags": "كل الوسوم",

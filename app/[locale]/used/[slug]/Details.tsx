@@ -245,7 +245,7 @@ const Details = ({ params }: { params: { slug: string } }) => {
         <div className="max-w-6xl mx-auto text-white">
           <div className="mb-2 lg:mb-12 text-center">
             <h5 className="bg-[#B91C1C] text-2xl font-bold px-2 rounded-md text-white inline-block">
-              {t("scooterDetails")}
+              {t("usedDetails")}
             </h5>
           </div>
 

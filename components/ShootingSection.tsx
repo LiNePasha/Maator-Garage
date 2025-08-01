@@ -77,7 +77,7 @@ const ShootingSection = () => {
               <Image
                 src={image.acf.image_urls}
                 alt={image.title.rendered}
-                className="rounded-xl object-cover"
+                className="rounded-xl object-contain"
                 layout="fill"
               />
             </div>

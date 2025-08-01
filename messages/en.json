@@ -19,7 +19,7 @@
     "ar": "ARABIC",
     "en": "ENGLISH",
     "go": "Shop Accessories",
-    "usedMotos": "Used"
+    "used": "Used"
   },
   "Videos": {
     "title1": "Bring your style",
@@ -47,7 +47,7 @@
     "galleryTitle": "Gallery",
     "gallerySubtitle": "Explore the best shots and customer deliveries",
     "videos": "Videos",
-    "usedMotos": "Used"
+    "used": "Used"
   },
   "Contact": {
     "title": "Get in",
@@ -101,7 +101,8 @@
     "showDetails": "Show Details",
     "videos": "Review Videos",
     "motoDetails": "Motorcycle Details",
-    "scooterDetails": "Scooter Details"
+    "scooterDetails": "Scooter Details",
+    "usedDetails": "Details"
   },
   "posts": {
     "allTags": "All Tags",
