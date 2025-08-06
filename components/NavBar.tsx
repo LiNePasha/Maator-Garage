@@ -189,7 +189,7 @@ const NavBar = ({ className, id }: NavProps) => {
           <div className="flex justify-center py-2">
             <Link href="/">
               <Image
-                src="/logobb.png"
+                src="/logo.png"
                 alt="logo"
                 width={100}
                 height={75}
