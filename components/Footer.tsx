@@ -65,7 +65,7 @@ const Footer = () => {
       <div className="mx-auto px-10 lg:px-32">
         <div className="flex flex-col md:flex-row md:justify-between items-center gap-6 lg:gap-0">
           {/* Logo and Social Links */}
-          <div className="flex flex-col max-w-[550px] my-auto mt-4 md:items-start">
+          <div className="flex flex-col max-w-[550px] my-auto mt-4 justify-center items-center md:items-start">
             <a href="/" aria-current="page" className="inline-block">
               <Image
                 src={footerData.logo.src}
@@ -101,10 +101,10 @@ const Footer = () => {
           {footerData.sections.map((section, index) => (
             <div
               key={index}
-              className="flex flex-col items-start max-w-[350px] my-auto mt-6"
+              className="flex flex-col items-center md:items-start max-w-[350px] my-auto mt-6"
             >
               <h2 className="font-medium text-2xl mb-6">{section.title}</h2>
-              <div className="flex flex-col gap-4">
+              <div className="flex flex-col gap-4 items-center md:items-start">
                 {section.items.map((item, idx) =>
                   "href" in item ? (
                     <Link
