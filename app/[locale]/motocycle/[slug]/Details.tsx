@@ -460,9 +460,10 @@ const Details = ({ params }: { params: { slug: string } }) => {
             {/* <h3 className="text-lg font-semibold text-primary mb-2">
               {t("intersted")}
             </h3> */}
-            <div className="text-xl text-gray-800 font-bold tracking-wide">
-              {motorcycle.number}
-            </div>
+            <div
+              className="text-xl text-gray-800 font-bold tracking-wide"
+              dangerouslySetInnerHTML={{ __html: motorcycle.number }}
+            ></div>
           </div>
         )}
       </div>
