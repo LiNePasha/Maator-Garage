@@ -25,7 +25,7 @@ const MotorcyclesSection = () => {
   const [motorcycles, setMotorcycles] = useState<Motorcycle[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
-  const itemsPerPage = 8;
+  const itemsPerPage = 9;
   const router = useRouter();
   const locale = useLocale();
 
