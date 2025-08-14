@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import ImageCard from "./ImageCard";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
@@ -25,15 +24,26 @@ const ScootersSection = () => {
   const [scooters, setScooters] = useState<Scooter[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 9;
   const router = useRouter();
+  const t = useTranslations("motor");
+  const locale = useLocale();
 
   useEffect(() => {
     const fetchScooters = async () => {
       try {
+        setLoading(true);
         const response = await fetch(
-          "https://store.maator.com/wp-json/wp/v2/scooter-electric?acf_format=standard&_fields=acf,id,slug"
+          `https://store.maator.com/wp-json/wp/v2/scooter-electric?acf_format=standard&_fields=acf,id,slug&per_page=${itemsPerPage}&page=${page}`
         );
+
+        // Get total pages from WP API headers
+        const totalPagesHeader = response.headers.get("X-WP-TotalPages");
+        if (totalPagesHeader) {
+          setTotalPages(Number(totalPagesHeader));
+        }
+
         const data = await response.json();
 
         const formattedData = data.map((item: any) => ({
@@ -59,20 +69,10 @@ const ScootersSection = () => {
     };
 
     fetchScooters();
-  }, []);
-
-  const t = useTranslations("motor");
-  const locale = useLocale();
+  }, [page]);
 
   const backgroundColor = theme === "dark" ? "#0E0B0B" : "#FFFFFF";
   const textColor = theme === "dark" ? "#FFFFFF" : "#000000";
-
-  const totalPages = Math.ceil(scooters.length / itemsPerPage);
-  const startIndex = (page - 1) * itemsPerPage;
-  const displayedScooters = scooters.slice(
-    startIndex,
-    startIndex + itemsPerPage
-  );
 
   const changePage = (newPage: number) => {
     if (newPage > 0 && newPage <= totalPages) {
@@ -100,11 +100,8 @@ const ScootersSection = () => {
                     </div>
                   </div>
                 ))
-            : displayedScooters.map((scooter) => (
-                <div
-                  key={scooter.id}
-                  className="overflow-hidden"
-                >
+            : scooters.map((scooter) => (
+                <div key={scooter.id} className="overflow-hidden">
                   <div className="relative w-full rounded-lg mx-auto h-[34vh] md:h-[55vh] px-0 md:px-4">
                     <Image
                       src={scooter.src}
@@ -123,9 +120,11 @@ const ScootersSection = () => {
                       {scooter.price}
                     </p>
                     <button
-                      onClick={() => {
-                        router.push(`/${locale}/electricScooter/${scooter.slug}`);
-                      }}
+                      onClick={() =>
+                        router.push(
+                          `/${locale}/electricScooter/${scooter.slug}`
+                        )
+                      }
                       className="mt-4 bg-primary text-white px-3 py-1 rounded"
                     >
                       {t("showDetails")}
@@ -134,7 +133,12 @@ const ScootersSection = () => {
                 </div>
               ))}
         </div>
-        <div className="flex items-center justify-center mt-8 mb-4 space-x-4" dir="ltr">
+
+        {/* Pagination */}
+        <div
+          className="flex items-center justify-center mt-8 mb-4 space-x-4"
+          dir="ltr"
+        >
           <button
             onClick={() => changePage(page - 1)}
             disabled={page === 1}

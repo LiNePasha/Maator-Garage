@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import ImageCard from "./ImageCard";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
@@ -25,52 +24,53 @@ const MotorcyclesSection = () => {
   const [motorcycles, setMotorcycles] = useState<Motorcycle[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 9;
   const router = useRouter();
   const locale = useLocale();
+  const t = useTranslations("motor");
+
+  const fetchMotorcycles = async (pageNumber: number) => {
+    setLoading(true);
+    try {
+      const response = await fetch(
+        `https://store.maator.com/wp-json/wp/v2/motors?acf_format=standard&_fields=acf,id,slug&per_page=${itemsPerPage}&page=${pageNumber}`
+      );
+
+      // Get total pages from response header
+      const total = response.headers.get("X-WP-TotalPages");
+      if (total) setTotalPages(Number(total));
+
+      const data = await response.json();
+
+      const formattedData = data.map((item: any) => ({
+        id: item.id,
+        slug: item.slug,
+        src: item.acf.image,
+        title: item.acf.name,
+        price: item.acf.price,
+        displacement: item.acf.displacement,
+        horsePower: item.acf.horsepower,
+        torque: item.acf.torque,
+        dryWeight: item.acf.dryweight,
+        seatHeight: item.acf.seatheight,
+        safety: item.acf.safety,
+      }));
+
+      setMotorcycles(formattedData);
+    } catch (error) {
+      console.error("Failed to fetch motorcycles:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchMotorcycles = async () => {
-      try {
-        const response = await fetch(
-          "https://store.maator.com/wp-json/wp/v2/motors?acf_format=standard&_fields=acf,id,slug"
-        );
-        const data = await response.json();
+    fetchMotorcycles(page);
+  }, [page]);
 
-        const formattedData = data.map((item: any) => ({
-          id: item.id,
-          slug: item.slug,
-          src: item.acf.image,
-          title: item.acf.name,
-          price: item.acf.price,
-          displacement: item.acf.displacement,
-          horsePower: item.acf.horsepower,
-          torque: item.acf.torque,
-          dryWeight: item.acf.dryweight,
-          seatHeight: item.acf.seatheight,
-          safety: item.acf.safety,
-        }));
-
-        setMotorcycles(formattedData);
-      } catch (error) {
-        console.error("Failed to fetch motorcycles:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchMotorcycles();
-  }, []);
-  const t = useTranslations("motor");
   const backgroundColor = theme === "dark" ? "#0E0B0B" : "#FFFFFF";
   const textColor = theme === "dark" ? "#FFFFFF" : "#000000";
-
-  const totalPages = Math.ceil(motorcycles.length / itemsPerPage);
-  const startIndex = (page - 1) * itemsPerPage;
-  const displayedMotorcycles = motorcycles.slice(
-    startIndex,
-    startIndex + itemsPerPage
-  );
 
   const changePage = (newPage: number) => {
     if (newPage > 0 && newPage <= totalPages) {
@@ -98,7 +98,7 @@ const MotorcyclesSection = () => {
                     </div>
                   </div>
                 ))
-            : displayedMotorcycles.map((bike) => (
+            : motorcycles.map((bike) => (
                 <div
                   key={bike.id}
                   onClick={() => {
@@ -110,13 +110,13 @@ const MotorcyclesSection = () => {
                     <Image
                       src={bike.src}
                       alt={bike.title}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      style={{ objectFit: "cover" }}
                       className="rounded-xl !m-0"
                     />
                   </div>
 
-                  <div className="p-2 text-center ">
+                  <div className="p-2 text-center">
                     <h3 className="text-lg md:text-3xl !font-bold !mt-0 !mb-1 dark:text-white">
                       {bike.title}
                     </h3>
@@ -135,6 +135,8 @@ const MotorcyclesSection = () => {
                 </div>
               ))}
         </div>
+
+        {/* Pagination */}
         <div
           className="flex items-center justify-center mt-8 mb-4 space-x-4"
           dir="ltr"
@@ -148,18 +150,7 @@ const MotorcyclesSection = () => {
                 : "bg-primary text-white hover:opacity-80"
             }`}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M12.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 111.414 1.414L9.414 10l3.293 3.293a1 1 0 010 1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+            &lt;
           </button>
           {[...Array(totalPages)].map((_, index) => (
             <button
@@ -183,18 +174,7 @@ const MotorcyclesSection = () => {
                 : "bg-primary text-white hover:opacity-80"
             }`}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M7.293 14.707a1 1 0 001.414 0l4-4a1 1 0 000-1.414l-4-4a1 1 0 10-1.414 1.414L10.586 10l-3.293 3.293a1 1 0 000 1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+            &gt;
           </button>
         </div>
       </div>

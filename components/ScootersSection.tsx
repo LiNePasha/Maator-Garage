@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import ImageCard from "./ImageCard";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
@@ -25,15 +24,27 @@ const ScootersSection = () => {
   const [scooters, setScooters] = useState<Scooter[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const itemsPerPage = 9;
   const router = useRouter();
+  const t = useTranslations("motor");
+  const locale = useLocale();
 
   useEffect(() => {
     const fetchScooters = async () => {
       try {
+        setLoading(true);
+
         const response = await fetch(
-          "https://store.maator.com/wp-json/wp/v2/scooters?acf_format=standard&_fields=acf,id,slug"
+          `https://store.maator.com/wp-json/wp/v2/scooters?acf_format=standard&_fields=acf,id,slug&per_page=${itemsPerPage}&page=${page}`
         );
+
+        // Get total pages from WP API headers
+        const totalPagesHeader = response.headers.get("X-WP-TotalPages");
+        if (totalPagesHeader) {
+          setTotalPages(Number(totalPagesHeader));
+        }
+
         const data = await response.json();
 
         const formattedData = data.map((item: any) => ({
@@ -59,20 +70,10 @@ const ScootersSection = () => {
     };
 
     fetchScooters();
-  }, []);
-
-  const t = useTranslations("motor");
-  const locale = useLocale();
+  }, [page]);
 
   const backgroundColor = theme === "dark" ? "#0E0B0B" : "#FFFFFF";
   const textColor = theme === "dark" ? "#FFFFFF" : "#000000";
-
-  const totalPages = Math.ceil(scooters.length / itemsPerPage);
-  const startIndex = (page - 1) * itemsPerPage;
-  const displayedScooters = scooters.slice(
-    startIndex,
-    startIndex + itemsPerPage
-  );
 
   const changePage = (newPage: number) => {
     if (newPage > 0 && newPage <= totalPages) {
@@ -85,26 +86,21 @@ const ScootersSection = () => {
       <div className="container mx-auto mt-6 px-0 md:px-[2rem]">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-6">
           {loading
-            ? Array(itemsPerPage)
-                .fill(0)
-                .map((_, index) => (
-                  <div
-                    key={index}
-                    className="border rounded-lg overflow-hidden bg-[#F1F2F4] animate-pulse"
-                  >
-                    <div className="relative w-[calc(100%-2rem)] mx-auto h-[30vh] px-4 bg-gray-300"></div>
-                    <div className="p-4 flex flex-col justify-between h-[120px]">
-                      <div className="bg-gray-300 h-4 w-3/4 mb-2"></div>
-                      <div className="bg-gray-300 h-4 w-1/2 mb-4"></div>
-                      <div className="bg-gray-300 h-8 w-full"></div>
-                    </div>
-                  </div>
-                ))
-            : displayedScooters.map((scooter) => (
+            ? Array(itemsPerPage).fill(0).map((_, index) => (
                 <div
-                  key={scooter.id}
-                  className="overflow-hidden"
+                  key={index}
+                  className="border rounded-lg overflow-hidden bg-[#F1F2F4] animate-pulse"
                 >
+                  <div className="relative w-[calc(100%-2rem)] mx-auto h-[30vh] px-4 bg-gray-300"></div>
+                  <div className="p-4 flex flex-col justify-between h-[120px]">
+                    <div className="bg-gray-300 h-4 w-3/4 mb-2"></div>
+                    <div className="bg-gray-300 h-4 w-1/2 mb-4"></div>
+                    <div className="bg-gray-300 h-8 w-full"></div>
+                  </div>
+                </div>
+              ))
+            : scooters.map((scooter) => (
+                <div key={scooter.id} className="overflow-hidden">
                   <div className="relative w-full rounded-lg mx-auto h-[34vh] md:h-[55vh] px-0 md:px-4">
                     <Image
                       src={scooter.src}
@@ -116,7 +112,7 @@ const ScootersSection = () => {
                   </div>
 
                   <div className="p-2 text-center">
-                    <h3 className="text-lg md:text-3xl !font-bold !mt-0 !mb-1 dark:text-white">
+                    <h3 className="text-lg md:text-3xl font-bold mt-0 mb-1 dark:text-white">
                       {scooter.title}
                     </h3>
                     <p className="text-primary text-lg font-bold">
@@ -134,6 +130,8 @@ const ScootersSection = () => {
                 </div>
               ))}
         </div>
+
+        {/* Pagination */}
         <div className="flex items-center justify-center mt-8 mb-4 space-x-4" dir="ltr">
           <button
             onClick={() => changePage(page - 1)}
@@ -144,18 +142,7 @@ const ScootersSection = () => {
                 : "bg-primary text-white hover:opacity-80"
             }`}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M12.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 111.414 1.414L9.414 10l3.293 3.293a1 1 0 010 1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+            ‹
           </button>
           {[...Array(totalPages)].map((_, index) => (
             <button
@@ -179,18 +166,7 @@ const ScootersSection = () => {
                 : "bg-primary text-white hover:opacity-80"
             }`}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M7.293 14.707a1 1 0 001.414 0l4-4a1 1 0 000-1.414l-4-4a1 1 0 10-1.414 1.414L10.586 10l-3.293 3.293a1 1 0 000 1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+            ›
           </button>
         </div>
       </div>
